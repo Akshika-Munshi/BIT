@@ -16,7 +16,7 @@ from cryptography.fernet import Fernet
 choose=input("Do you want to host(1) or connect(2)?")
 if choose=="1":
     server=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(("192.168.113.228", 9876))
+    server.bind(("0.0.0.0", 8080))
     server.listen()
 
     client, _ = server.accept()
@@ -24,7 +24,7 @@ if choose=="1":
     ## public_partner= rsa.PublicKey.load_pkcs1(client.recv(1024))
 elif choose=="2":
     client=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect(("192.168.113.228" , 9876))
+    client.connect(("0.0.0.0" , 8080))
     ##public_partner= rsa.PublicKey.load_pkcs1(client.recv(1024))
     ##client.send(public_key.save_pkcs1("FORMAT = PEM"))
 else:
